@@ -1,0 +1,14 @@
+.addNew {
+  position: absolute;
+  right: 3px;
+  top: 20px;
+}
+
+th {
+  font-size: 10px !important;
+}
+
+.primary-text {
+  font-size: .3em !important;
+  color: #070 !important;
+}
