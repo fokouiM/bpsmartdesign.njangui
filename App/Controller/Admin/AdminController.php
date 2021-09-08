@@ -464,78 +464,383 @@
 			$this->renderForbidden('admin.home.nofound', compact('title'));
 		}
 
-		public function index() {
+		public function Home() {
 
-			$title = 'NJANGUI :: Application de Gestion des Réunion - Lite (Bpsmartdesign) - Dashboard';
-			$membres = $this->loadModel('membre')->currentActiveMembre($_SESSION['bpsmartdesign.njangui.id']);
+			$title = 'WebPlan_site';
 
-			$this->render('admin.home.index', compact('title', 'membres'));
+			$this->render('admin.home.Home', compact('title'));
 		}
 
-		public function depot() {
+		public function Gestion_des_Ressources() {
 
-			$title = $this->setTitle();
-			$depots = $this->loadModel('depot')->where('id_reunion', $_SESSION['bpsmartdesign.njangui.id']);
+			$title = 'WebPlan_site :: Gestion_des_Ressources';
 
-			foreach($depots as $v) {
-				$v->membre = $this->loadModel('membre')->find($v->id_membre)->nom_complet;
-				$v->reunion = $this->loadModel('reunion')->find($v->id_reunion)->nom;
-			}
-
-			$this->render('admin.home.depot', compact('title', 'depots'));
+			$this->render('admin.Gestion_des_Ressources', compact('title'));
 		}
 
-		public function emprunt() {
+		public function Gestion_des_clients() {
 
-			$title = $this->setTitle();
-			$emprunts = $this->loadModel('emprunt')->where('id_reunion', $_SESSION['bpsmartdesign.njangui.id']);
+			$title = 'WebPlan_site :: Gestion_des_clients';
 
-			foreach($emprunts as $v) {
-				$v->membre = $this->loadModel('membre')->find($v->id_membre)->nom_complet;
-				$v->reunion = $this->loadModel('reunion')->find($v->id_reunion)->nom;
-			}
-			$this->render('admin.home.emprunt', compact('title', 'emprunts'));
+			$this->render('admin.Gestion_des_clients', compact('title'));
 		}
 
-		public function membre() {
+		public function Activites_Commerciales() {
 
-			$title = $this->setTitle();
-			$membres = $this->loadModel('membre')->currentMembre($_SESSION['bpsmartdesign.njangui.id']);
+			$title = 'WebPlan_site :: Activités_Commerciales';
 
-			foreach($membres as $tm) {
-				$membre_depot = $this->loadModel('depot')->depotMembre($tm->id, $_SESSION['bpsmartdesign.njangui.id']);
-				$tm->total_depot = 0;
-
-				foreach ($membre_depot as $md) {
-					$tm->total_depot += $md->montant;
-				}	
-			}
-
-			$this->render('admin.home.membre', compact('title', 'membres'));
+			$this->render('admin.Activites_Commerciales', compact('title'));
 		}
 
-		public function rapport() {
+		public function Planifications() {
 
-			$title = $this->setTitle();
-			$this->render('admin.home.rapport', compact('title'));
-		}
+			$title = 'WebPlan_site :: Planifications';
 
-		public function reunion() {
-
-			$title = $this->setTitle();
-			$reunions = $this->loadModel('reunion')->all();
-
-			$this->render('admin.home.reunion', compact('title', 'reunions'));
-		}
-
-		public function user() {
-
-			$title = $this->setTitle();
-			$id = $_SESSION['bpsmartdesign.njangui.id'];
-			$users = $this->loadModel('user')->findeInReunion($id);
-
-			$this->render('admin.home.user', compact('title', 'users'));
+			$this->render('admin.Planifications', compact('title'));
 		}
 		
+		public function Releves_activites() {
+
+			$title = 'WebPlan_site :: Releves_activites';
+
+			$this->render('admin.Releves_activites', compact('title'));
+		}
+
+		public function Preparation_de_la_paie() {
+
+			$title = 'WebPlan_site :: Preparation_de_la_paie';
+
+			$this->render('admin.Preparation_de_la_paie', compact('title'));
+		}
+
+		public function Configuration() {
+
+			$title = 'WebPlan_site :: Configuration';
+
+			$this->render('admin.Configuration', compact('title'));
+		}
+
+		public function Gestion_des_utilisateurs() {
+
+			$title = 'WebPlan_site :: Gestion_des_utilisateurs';
+
+			$this->render('admin.Gestion_des_utilisateurs', compact('title'));
+		}
+
+		public function Guide_utilisation() {
+
+			$title = 'WebPlan_site :: Guide_utilisation';
+
+			$this->render('admin.Guide_utilisation', compact('title'));
+		}
+
+		public function Support_tecchnique() {
+
+			$title = 'WebPlan_site :: Support_tecchnique';
+
+			$this->render('admin.Support_tecchnique', compact('title'));
+		}
+
+		public function Accedez_a_lextranet() {
+
+			$title = 'WebPlan_site :: Accedez_a_lextranet';
+
+			$this->render('admin.Accedez_a_lextranet', compact('title'));
+		}
+		public function liens_provisoires() {
+
+			$title = 'WebPlan_site :: liens provisoires';
+
+			$this->render('admin.liens_provisoires', compact('title'));
+		}
+		public function contact() {
+
+			$title = 'WebPlan_site :: contact';
+
+			$this->render('admin.form.contact', compact('title'));
+		}
+
+		public function Devis() {
+
+			$title = 'WebPlan_site :: Devis';
+
+			$this->render('admin.form.Devis', compact('title'));
+		}
+
+		public function notre_expertise() {
+
+			$title = 'WebPlan_site :: notre_expertise';
+
+			$this->render('admin.notre_expertise', compact('title'));
+		}
+
+		public function toutes_les_fonctionnalites() {
+
+			$title = 'WebPlan_site :: toutes_les_fonctionnalites';
+
+			$this->render('admin.toutes_les_fonctionnalites', compact('title'));
+		}
+
+		public function actualite() {
+
+			$title = 'WebPlan_site :: actualite';
+
+			$this->render('admin.actualite', compact('title'));
+		}
+
+		public function societe() {
+
+			$title = 'WebPlan_site :: societe';
+
+			$this->render('admin.societe', compact('title'));
+		}
+
+		public function Partenaires() {
+
+			$title = 'WebPlan_site :: Partenaires';
+
+			$this->render('admin.Partenaires', compact('title'));
+		}
+
+		public function Nous_rejoindre() {
+
+			$title = 'WebPlan_site :: Nous_rejoindre';
+
+			$this->render('admin.Nous_rejoindre', compact('title'));
+		}
+
+		public function Tarifs_Packs() {
+
+			$title = 'WebPlan_site :: Tarifs_Packs';
+
+			$this->render('admin.Tarifs_Packs', compact('title'));
+		}
+
+		public function Tarifs_DemoPacks() {
+
+			$title = 'WebPlan_site :: Demo';
+
+			$this->render('admin.Demo', compact('title'));
+		}
+
+		public function MENTIONS_LAGALES() {
+
+			$title = 'WebPlan_site :: MENTIONS_LAGALES';
+
+			$this->render('admin.MENTIONS_LAGALES', compact('title'));
+		}
+
+		public function POLITIQUE_DE_PROTECTION() {
+
+			$title = 'WebPlan_site :: POLITIQUE_DE_PROTECTION';
+
+			$this->render('admin.POLITIQUE_DE_PROTECTION', compact('title'));
+		}
+
+		public function send_mail_contact() {
+
+			$title = 'WebPlan_site :: send_mail_contact';
+			$this->postControl();
+			$nom = $this->secureData($_POST['nom']);
+			$email = $this->secureData($_POST['email']);
+			$phone = $this->secureData($_POST['phone']);
+			$societe = $this->secureData($_POST['societe']);
+			$effectifs = $this->secureData($_POST['effectifs']);
+			$pays = $this->secureData($_POST['pays']);
+			$message = $this->secureData($_POST['message']);
+			$objet = $this->secureData($_POST['objet']);
+
+					$to = "Email: contact@webplansaas.com, Info@webplansaas.com";
+					$subject = "webplan site";
+
+					$message = "
+					<html>
+					<head>
+					<title>mail de contact</title>
+					<style>
+						table {
+							border-collapse: collapse
+						}
+
+						th {
+							background: #8c8b8c;
+							color:#fff;
+							border: 1px solid black;
+  							padding: 10px;
+						}
+						td {
+							border: 1px solid black;
+  							padding: 10px;
+						}
+					</style>
+					</head>
+					<body>
+					<p>Ce mail proviens du formulaire de contact de webplan site web</p>
+					<table>
+					<tr>
+					<th>nom</th>
+					<th>email</th>
+					<th>telephone</th>
+					<th>société</th>
+					<th>objet</th>
+					<th>message</th>
+					</tr>
+					<tr>
+					<td>$nom</td>
+					<td>$email</td>
+					<td>$phone</td>
+					<td>$societe</td>
+					<td>$objet</td>
+					<td>$message</td>
+					</tr>
+					</table>
+					</body>
+					</html>
+					";
+
+					// Always set content-type when sending HTML email
+					$headers = "MIME-Version: 1.0" . "\r\n";
+					$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+					// More headers
+					$headers .= 'From: <contact@webplansaas.com>' . "\r\n";
+					$headers .= 'Cc: Info@webplansaas.com' . "\r\n";
+
+					mail($to,$subject,$message,$headers);
+					$valide = true;
+					$this->render('admin.form.contact', compact('title','valide'));
+		}
+
+		public function send_devis() {
+
+			$title = 'WebPlan_site :: send_mail_contact';
+			$this->postControl();
+			$nom = $this->secureData($_POST['nom']);
+			$email = $this->secureData($_POST['email']);
+			$phone = $this->secureData($_POST['phone']);
+			$societe = $this->secureData($_POST['societe']);
+			$effectifs = $this->secureData($_POST['effectifs']);
+			$pays = $this->secureData($_POST['pays']);
+			$message = $this->secureData($_POST['message']);
+
+					$to = "Email: contact@webplansaas.com, Info@webplansaas.com";
+					$subject = "webplan site";
+
+					$message = "
+					<html>
+					<head>
+					<title>mail de contact</title>
+					<style>
+						table {
+							border-collapse: collapse
+						}
+
+						th {
+							background: #8c8b8c;
+							color:#fff;
+							border: 1px solid black;
+  							padding: 10px;
+						}
+						td {
+							border: 1px solid black;
+  							padding: 10px;
+						}
+					</style>
+					</head>
+					<body>
+					<p>Ce mail proviens du formulaire de demande de devis de webplan site web</p>
+					<table>
+					<tr>
+					<th>nom</th>
+					<th>email</th>
+					<th>telephone</th>
+					<th>société</th>
+					<th>nombre d'agents</th>
+					<th>adresse</th>
+					<th>message</th>
+					</tr>
+					<tr>
+					<td>$nom</td>
+					<td>$email</td>
+					<td>$phone</td>
+					<td>$societe</td>
+					<td>$effectifs</td>
+					<td>$pays</td>
+					<td>$message</td>
+					</tr>
+					</table>
+					</body>
+					</html>
+					";
+
+					// Always set content-type when sending HTML email
+					$headers = "MIME-Version: 1.0" . "\r\n";
+					$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+					// More headers
+					$headers .= 'From: <contact@webplansaas.com>' . "\r\n";
+					$headers .= 'Cc: Info@webplansaas.com' . "\r\n";
+
+					mail($to,$subject,$message,$headers);
+					$valide = true;
+					$this->render('admin.form.Devis', compact('title','valide'));
+		}
+
+		public function newslatter() {
+
+			$title = 'WebPlan_site :: send_mail_contact';
+			$this->postControl();
+			$email= $this->secureData($_POST['email']);
+
+					$to = "Email: contact@webplansaas.com, Info@webplansaas.com";
+					$subject = "webplan site";
+
+					$message = "
+					<html>
+					<head>
+					<title>mail de contact</title>
+					<style>
+						table {
+							border-collapse: collapse
+						}
+
+						th {
+							background: #8c8b8c;
+							color:#fff;
+							border: 1px solid black;
+  							padding: 10px;
+						}
+						td {
+							border: 1px solid black;
+  							padding: 10px;
+						}
+					</style>
+					</head>
+					<body>
+					<p>Ce mail proviens du formulaire des newslatters de webplan site web</p>
+					<table>
+					<tr>
+					<th>email</th>
+					</tr>
+					<tr>
+					<td>$email</td>
+					</tr>
+					</table>
+					</body>
+					</html>
+					";
+
+					// Always set content-type when sending HTML email
+					$headers = "MIME-Version: 1.0" . "\r\n";
+					$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+					// More headers
+					$headers .= 'From: <contact@webplansaas.com>' . "\r\n";
+					$headers .= 'Cc: Info@webplansaas.com' . "\r\n";
+
+					mail($to,$subject,$message,$headers);
+					$valide = true;
+					$this->render('admin.home.Home', compact('title','valide'));
+		}
 	}
  ?>

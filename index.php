@@ -1,5 +1,5 @@
 <?php
-    header("Location: admin/index");
+    header("Location: admin/Home");
     
 ?>
 
